@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- cdn vuejs-->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- stylesheet-->
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+<body>
+   
+    <div id="carousel">
+        <!-- main gallery -->
+        <div class="main-img">
+            <!-- prev -->
+            <i class="fa-solid fa-circle-arrow-left" @click="prev"></i>
+            <!-- image gallery and descriprion -->
+            <div class="figure" v-for="(image, i) in images" v-show="currentIndex === i">
+                <img :src="image.image" alt=""  >
+                <div class="description" >
+                    <h1>{{image.title}}</h1>
+                    <p>{{image.text}}</p>
+                </div >
+            </div>
+            <!-- next -->
+            <i class="fa-solid fa-circle-arrow-right" @click="next"></i>
+        </div>
+        <!-- highlights -->
+        <div class="small-screen">
+            
+            <div v-for="(image, i) in images" class="bottom-image">
+                <!-- images -->
+                <img :src="image.image" alt="" :class="{filter: currentIndex !== i}" @click="goToPic(i)" @mouseenter="stopLoop" @mouseleave="continueLoop">
+            </div>
+        </div>
+
+    </div>
+   
+
+    
+    <script src="js/script.js"></script>
+</body>
+</html>
